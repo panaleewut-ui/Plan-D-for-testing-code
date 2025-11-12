@@ -13,7 +13,7 @@
   <div class="container result-container">
     <!-- ส่วนหัว -->
     <header class="result-header">
-      <h2>ผลลัพธ์ของคุณ</h2>
+      <h2 class="page-title">ผลลัพธ์ของคุณ</h2>
       <div class="top-actions">
         <button class="secondary-btn" onclick="location.href='index.html'">ย้อนกลับหน้าแรก</button>
       </div>
@@ -21,19 +21,19 @@
 
     <!-- กล่องข้อมูลสรุป -->
     <section class="summary-section">
-      <div class="info-box light-box">
+      <div class="info-box light-box card-box">
         <h3>ข้อมูลส่วนตัว</h3>
         <p id="personalInfo"></p>
         <p id="goalResult" class="muted"></p>
       </div>
 
-      <div class="info-box mid-box">
+      <div class="info-box mid-box card-box">
         <h3>พลังงาน</h3>
         <p id="tdeeOriginal" class="muted"></p>
         <p id="tdeeResult" class="strong"></p>
       </div>
 
-      <div class="info-box dark-box">
+      <div class="info-box dark-box card-box">
         <h3>โปรตีนตามเป้าหมาย</h3>
         <p id="proteinResult" class="muted"></p>
 
@@ -65,7 +65,12 @@
             <th>เย็น</th>
           </tr>
         </thead>
-        <tbody id="foodTableBody"></tbody>
+        <tbody id="foodTableBody">
+          <!-- 🟫 แทรกหัวข้อใหญ่ "เนื้อสัตว์" -->
+          <tr class="category-header">
+            <td colspan="6" style="text-align:left; background:#fff5e6; font-weight:600;">เนื้อสัตว์</td>
+          </tr>
+        </tbody>
       </table>
     </section>
   </div>
@@ -74,6 +79,5 @@
   <script type="module" src="data.js"></script>
   <script type="module" src="dataExtra.js"></script>
   <script type="module" src="result.js"></script>
-  
 </body>
 </html>

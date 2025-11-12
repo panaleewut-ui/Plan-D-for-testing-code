@@ -7,50 +7,68 @@
   <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="result-page">
-  <div class="bg-overlay"></div>
-  <div class="container result-container">
-    <header class="result-header">
-      <h2>ผลลัพธ์ของคุณ</h2>
-      <div class="top-actions">
-        <span id="combineToggle" class="combine-toggle">รวมโปรตีน</span>
-        <button class="secondary-btn" onclick="location.href='index.html'">ย้อนกลับหน้าแรก</button>
-      </div>
-    </header>
 
-    <section class="summary card">
-      <div class="left">
-        <p id="personalInfo"></p>
-        <p id="goalResult" class="muted"></p>
-        <p id="tdeeOriginal" class="muted"></p>
-        <p id="tdeeResult" class="strong"></p>
-        <p id="proteinResult" class="muted"></p>
+<body class="result-page">
+  <div class="container result-container">
+    <h2>ผลลัพธ์ของคุณ</h2>
+
+    <!-- กล่องข้อมูล -->
+    <section class="info-section">
+      <div class="info-box light-box">
+        <h3>ข้อมูลผู้ใช้</h3>
+        <p id="userInfo">-</p>
       </div>
-      <div class="right">
-        <div id="distBoxes" class="dist-boxes">
-          <!-- แสดง Carb / Protein / Fat % -->
+
+      <div class="info-box mid-box">
+        <h3>พลังงาน</h3>
+        <p>พลังงานพื้นฐาน (TDEE): <span id="tdeeBase">-</span> kcal</p>
+        <p>พลังงานตามเป้าหมาย: <span id="tdeeFinal">-</span> kcal</p>
+      </div>
+
+      <div class="info-box dark-box">
+        <h3>ปริมาณโปรตีนตามเป้าหมาย</h3>
+        <p><span id="proteinTarget">-</span> g</p>
+
+        <div class="caloric-box">
+          <div><strong>คาร์โบไฮเดรต</strong><br><span id="carbPercent">-</span>%</div>
+          <div><strong>โปรตีน</strong><br><span id="proteinPercent">-</span>%</div>
+          <div><strong>ไขมัน</strong><br><span id="fatPercent">-</span>%</div>
         </div>
-        <p id="exampleText" class="example-text muted"></p>
       </div>
     </section>
 
-    <section id="foodTableContainer" class="card">
-      <h3>ตัวอย่างตารางสัดส่วนอาหารที่ให้พลังงาน</h3>
-      <table id="foodTable" class="food-table">
+    <!-- ส่วนหัวของตาราง -->
+    <div class="table-header">
+      <div>
+        <h3>ตัวอย่างตารางสัดส่วนอาหาร</h3>
+        <p class="table-subtitle" id="exampleMeta">ตัวอย่างสัดส่วนอาหารที่ให้พลังงาน ... kcal โปรตีน ... g</p>
+      </div>
+      <button id="toggleCombine" class="toggle-btn">รวมเนื้อสัตว์</button>
+    </div>
+
+    <!-- ตาราง -->
+    <div class="table-container">
+      <table id="foodTable">
         <thead>
           <tr>
             <th>ลำดับ</th>
             <th>หมวดอาหาร</th>
-            <th>จำนวนส่วน (ทั้งวัน)</th>
+            <th>รวมทั้งหมด (ส่วน)</th>
             <th>เช้า</th>
             <th>กลางวัน</th>
             <th>เย็น</th>
           </tr>
         </thead>
-        <tbody id="foodTableBody"></tbody>
+        <tbody></tbody>
       </table>
-    </section>
+    </div>
   </div>
+
+  <script src="data.js"></script>
+  <script src="dataExtra.js"></script>
+  <script src="result.js"></script>
+</body>
+
 
   <script type="module" src="data.js"></script>
   <script type="module" src="dataExtra.js"></script>

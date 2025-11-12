@@ -205,3 +205,32 @@ input:focus,select:focus{ outline:none; box-shadow:0 3px 9px rgba(0,0,0,0.06); b
   .app-name{ font-size:1.6rem; }
   .main-btn{ padding:12px; }
 }
+
+/* ทำให้ชื่อหัวเรื่องอยู่กลาง */
+.page-title {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+/* กล่องข้อมูลแบบแยกกรอบ */
+.card-box {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background: #f9f9f9;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* แยกสีแต่ละกล่อง */
+.light-box { background: #f9f9f9; }
+.mid-box { background: #f4f6f7; }
+.dark-box { background: #e9edf1; }
+
+/* หัวข้อกลุ่มในตาราง (เช่น เนื้อสัตว์) */
+.category-header td {
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #fff5e6 !important;
+  color: #333;
+}

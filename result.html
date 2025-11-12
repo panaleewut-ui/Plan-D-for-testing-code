@@ -4,88 +4,57 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>ผลลัพธ์ | PLAN :D</title>
-  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body class="result-page">
-  <div class="page-bg page-bg-result"></div>
-
-  <main class="container result-container">
-    <h2>ผลลัพธ์ของคุณ</h2>
-
-    <!-- ข้อมูลสรุปด้านบน (box แยก) -->
-    <section class="summary-row">
-      <div class="info-box light">
-        <h4>ข้อมูลผู้ใช้</h4>
-        <p id="userInfo">-</p>
+  <div class="bg-overlay"></div>
+  <div class="container result-container">
+    <header class="result-header">
+      <h2>ผลลัพธ์ของคุณ</h2>
+      <div class="top-actions">
+        <span id="combineToggle" class="combine-toggle">รวมโปรตีน</span>
+        <button class="secondary-btn" onclick="location.href='index.html'">ย้อนกลับหน้าแรก</button>
       </div>
+    </header>
 
-      <div class="info-box medium">
-        <h4>พลังงาน (ไม่รวมเป้าหมาย)</h4>
-        <p id="tdeeBase">- kcal</p>
-
-        <h4 style="margin-top:12px">พลังงานตามเป้าหมาย</h4>
-        <p id="tdeeFinal">- kcal</p>
+    <section class="summary card">
+      <div class="left">
+        <p id="personalInfo"></p>
+        <p id="goalResult" class="muted"></p>
+        <p id="tdeeOriginal" class="muted"></p>
+        <p id="tdeeResult" class="strong"></p>
+        <p id="proteinResult" class="muted"></p>
       </div>
-
-      <div class="info-box dark">
-        <h4>ปริมาณโปรตีนตามเป้าหมาย</h4>
-        <p id="proteinTarget">- g</p>
-
-        <div class="cal-distribution">
-          <div class="dist-box">
-            <small>คาร์โบไฮเดรต</small>
-            <strong id="carbPercent">- %</strong>
-          </div>
-          <div class="dist-box">
-            <small>โปรตีน</small>
-            <strong id="proteinPercent">- %</strong>
-          </div>
-          <div class="dist-box">
-            <small>ไขมัน</small>
-            <strong id="fatPercent">- %</strong>
-          </div>
+      <div class="right">
+        <div id="distBoxes" class="dist-boxes">
+          <!-- แสดง Carb / Protein / Fat % -->
         </div>
+        <p id="exampleText" class="example-text muted"></p>
       </div>
     </section>
 
-    <!-- ตัวอย่างสัดส่วนอาหาร (หัวตาราง) -->
-    <div class="table-heading">
-      <div>
-        <h3>ตัวอย่างตารางสัดส่วนอาหาร</h3>
-        <p class="muted small" id="exampleMeta">ตัวอย่างสัดส่วนอาหารที่ให้พลังงาน ... kcal โปรตีน ... g</p>
-      </div>
-
-      <div class="toggle-area">
-        <span id="toggleCombine" class="toggle-link">รวมเนื้อสัตว์</span>
-      </div>
-    </div>
-
-    <!-- ตารางผลลัพธ์ -->
-    <div id="foodTableContainer" class="table-wrap">
+    <section id="foodTableContainer" class="card">
+      <h3>ตัวอย่างตารางสัดส่วนอาหารที่ให้พลังงาน</h3>
       <table id="foodTable" class="food-table">
         <thead>
           <tr>
-            <th style="width:4%">#</th>
-            <th style="width:34%">หมวดอาหาร</th>
-            <th style="width:18%">รวมทั้งหมด (ส่วน)</th>
-            <th style="width:15%">เช้า</th>
-            <th style="width:15%">กลางวัน</th>
-            <th style="width:14%">เย็น</th>
+            <th>ลำดับ</th>
+            <th>หมวดอาหาร</th>
+            <th>จำนวนส่วน (ทั้งวัน)</th>
+            <th>เช้า</th>
+            <th>กลางวัน</th>
+            <th>เย็น</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody id="foodTableBody"></tbody>
       </table>
-    </div>
+    </section>
+  </div>
 
-    <div class="actions result-actions">
-      <button class="secondary-btn" onclick="location.href='index.html'">ย้อนกลับหน้าแรก</button>
-    </div>
-  </main>
-
-  <!-- ต้องใส่ data.js และ dataExtra.js เป็นไฟล์สคริปต์ global (ไม่ใช่ type=module) -->
-  <script src="data.js"></script>
-  <script src="dataExtra.js"></script>
-  <script src="result.js"></script>
+  <script type="module" src="data.js"></script>
+  <script type="module" src="dataExtra.js"></script>
+  <script type="module" src="result.js"></script>
+  
 </body>
 </html>

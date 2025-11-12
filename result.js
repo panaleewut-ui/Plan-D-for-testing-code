@@ -148,6 +148,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const withMeals = computeMeals(working);
+    // ✅ ถ้า total = 0 ให้แสดง "-" ในช่องมื้อ (แทนการลบแถวทิ้ง)
+  withMeals.forEach(row => {
+    if (row.total === 0) {
+      row.breakfast = "-";
+      row.lunch = "-";
+      row.dinner = "-";
+    }
+  });
 
     withMeals.forEach((row, idx) => {
       const tr = document.createElement("tr");

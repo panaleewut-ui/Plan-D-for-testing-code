@@ -234,3 +234,241 @@ input:focus,select:focus{ outline:none; box-shadow:0 3px 9px rgba(0,0,0,0.06); b
   background-color: #fff5e6 !important;
   color: #333;
 }
+
+/* ============================= */
+/* 🌈 หน้าผลลัพธ์ (Result Page) */
+/* ============================= */
+
+/* ตั้งค่าหลักให้ดูสะอาดขึ้น */
+.result-page {
+  background: linear-gradient(160deg, #fdfcfb, #e6f7ee);
+  font-family: 'Prompt', sans-serif;
+  color: #333;
+  min-height: 100vh;
+  padding: 2rem 0;
+}
+
+.result-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.result-header h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #ff914d;
+  margin-bottom: 1rem;
+}
+
+.top-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ปุ่มรวม/แยกเนื้อสัตว์ */
+.combine-toggle {
+  background: #ffcc33;
+  border: none;
+  color: #333;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.combine-toggle:hover {
+  background: #ffd966;
+  transform: scale(1.05);
+}
+
+/* ============================= */
+/* 🔳 กรอบข้อมูลสรุป */
+/* ============================= */
+
+.summary-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.info-box {
+  flex: 1;
+  min-width: 260px;
+  border-radius: 15px;
+  padding: 1.2rem;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+.info-box h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.light-box {
+  background-color: #f9f9f9;
+}
+
+.mid-box {
+  background-color: #f3f3f3;
+}
+
+.dark-box {
+  background-color: #eaeaea;
+}
+
+/* ============================= */
+/* 📊 ตารางสัดส่วนอาหาร */
+/* ============================= */
+
+.table-section {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.table-header h3 {
+  font-size: 1.4rem;
+  color: #333;
+  margin: 0;
+}
+
+.example-text {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* ตารางหลัก */
+.food-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.food-table th {
+  background-color: #ffefa1;
+  color: #333;
+  font-weight: 600;
+  padding: 0.7rem;
+  text-align: center;
+  border-bottom: 2px solid #ddd;
+}
+
+.food-table td {
+  text-align: center;
+  padding: 0.6rem;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+}
+
+/* สีพื้นหลังหมวดต่าง ๆ */
+tr td:nth-child(2) {
+  text-align: left;
+}
+
+tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* 🟨 หมวดข้าวแป้ง */
+tr[data-type="ข้าว-แป้ง"] {
+  background-color: #fff9cc;
+}
+
+/* 🟩 หมวดเนื้อสัตว์ (เฉดเขียว) */
+tr[data-type="เนื้อสัตว์ไขมันต่ำมาก"] {
+  background-color: #d7f9d7;
+}
+
+tr[data-type="เนื้อสัตว์ไขมันต่ำ"] {
+  background-color: #c0f0c0;
+}
+
+tr[data-type="เนื้อสัตว์ไขมันปานกลาง"] {
+  background-color: #a9e6a9;
+}
+
+tr[data-type="เนื้อสัตว์ไขมันสูง"] {
+  background-color: #92dd92;
+}
+
+/* 🧈 หมวดไขมัน */
+tr[data-type="ไขมัน"] {
+  background-color: #ffe6b3;
+}
+
+/* 🥦 หมวดผัก */
+tr[data-type="ผัก ก"] {
+  background-color: #e8fbe8;
+}
+
+tr[data-type="ผัก ข"] {
+  background-color: #d4f5d4;
+}
+
+/* 🍎 หมวดผลไม้ */
+tr[data-type="ผลไม้"] {
+  background-color: #ffe6f0;
+}
+
+/* 🍼 หมวดนม */
+tr[data-type="นมไขมันเต็มส่วน"] {
+  background-color: #fff3d9;
+}
+
+tr[data-type="นมพร่องมันเนย"] {
+  background-color: #ffecc2;
+}
+
+tr[data-type="นมขาดมันเนย"] {
+  background-color: #ffe5ad;
+}
+
+/* 🍬 หมวดน้ำตาล */
+tr[data-type="น้ำตาลเพิ่มสำหรับประกอบอาหาร"] {
+  background-color: #f0f0f0;
+}
+
+/* 🩶 หัวข้อใหญ่ เช่น เนื้อสัตว์ / ผัก / นม */
+tr.header-row td {
+  font-weight: 700;
+  background-color: #ffffff !important;
+  color: #333;
+  border-bottom: 2px solid #ccc;
+}
+
+/* เยื้องหมวดย่อย */
+tr.indent td:first-child + td {
+  padding-left: 25px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .summary-section {
+    flex-direction: column;
+  }
+
+  .table-section {
+    padding: 1rem;
+  }
+
+  .food-table th,
+  .food-table td {
+    font-size: 0.85rem;
+    padding: 0.4rem;
+  }
+}

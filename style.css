@@ -567,3 +567,42 @@ tr[data-type="นมไขมันเต็มส่วน"] { background-color
 tr[data-type="นมพร่องมันเนย"] { background-color: #ffecc2 !important; }
 tr[data-type="นมขาดมันเนย"] { background-color: #ffe5ad !important; }
 tr[data-type="น้ำตาลเพิ่มสำหรับประกอบอาหาร"] { background-color: #f0f0f0 !important; }
+
+/* ✅ จัดหัวเรื่องให้อยู่ตรงกลางจริง */
+.result-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* ✅ สีพื้นหลังตามหมวด (ใหม่) */
+tr:nth-child(even) { background: transparent !important; }
+
+/* ข้าวแป้ง */
+tr[data-type="ข้าว-แป้ง"] { background-color: #fff9cc !important; }
+
+/* เนื้อสัตว์ — โทนแดงชมพู */
+tr[data-type="เนื้อสัตว์ไขมันต่ำมาก"] { background-color: #ffe1e6 !important; }
+tr[data-type="เนื้อสัตว์ไขมันต่ำ"] { background-color: #ffc4cc !important; }
+tr[data-type="เนื้อสัตว์ไขมันปานกลาง"] { background-color: #ffa3af !important; }
+tr[data-type="เนื้อสัตว์ไขมันสูง"] { background-color: #ff8899 !important; }
+
+/* ไขมัน — เทาอ่อน */
+tr[data-type="ไขมัน"] { background-color: #eeeeee !important; }
+
+/* ผัก */
+tr[data-type="ผัก ก"] { background-color: #e8fbe8 !important; }
+tr[data-type="ผัก ข"] { background-color: #d4f5d4 !important; }
+
+/* ผลไม้ */
+tr[data-type="ผลไม้"] { background-color: #ffe6f0 !important; }
+
+/* นม — โทนฟ้า */
+tr[data-type="นมไขมันเต็มส่วน"] { background-color: #d9ecff !important; }
+tr[data-type="นมพร่องมันเนย"] { background-color: #c2e0ff !important; }
+tr[data-type="นมขาดมันเนย"] { background-color: #add4ff !important; }
+
+/* น้ำตาล */
+tr[data-type="น้ำตาลเพิ่มสำหรับประกอบอาหาร"] { background-color: #f0f0f0 !important; }

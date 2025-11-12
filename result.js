@@ -20,15 +20,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const distBoxes = document.getElementById("distBoxes");
   const exampleText = document.getElementById("exampleText");
   const foodTableBody = document.getElementById("foodTableBody");
-  const foodTableContainer = document.getElementById("foodTableContainer");
   const combineToggle = document.getElementById("combineToggle");
 
   if (!gender || !tdeeBase || !tdeeFinal) {
-    foodTableContainer.innerHTML = "<p>ไม่พบข้อมูลการคำนวณ โปรดย้อนกลับไปกรอกใหม่</p>";
+    foodTableBody.innerHTML = "<p>ไม่พบข้อมูลการคำนวณ โปรดย้อนกลับไปกรอกใหม่</p>";
     return;
   }
 
-  personalInfo.textContent = `อายุ ${age} ปี • น้ำหนัก ${weight} กก. • ส่วนสูง ${height} ซม.`;
+  // ✅ ให้ข้อมูลเรียงลงมา
+  personalInfo.innerHTML = `
+    อายุ ${age} ปี<br>
+    น้ำหนัก ${weight} กก.<br>
+    ส่วนสูง ${height} ซม.
+  `;
+
   goalResult.textContent = `เป้าหมายของคุณ: ${
     goal === "maintain" ? "คงน้ำหนัก" : goal === "lose" ? "ลดน้ำหนัก" : "เพิ่มน้ำหนัก"
   }`;
@@ -61,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (!matchPlan) {
-    foodTableContainer.innerHTML = `<p style="text-align:center;color:#666;padding:1rem;">
+    foodTableBody.innerHTML = `<p style="text-align:center;color:#666;padding:1rem;">
         ❗ ระบบยังไม่มีฐานข้อมูลนี้ โปรดติดตามในอนาคต
       </p>`;
     return;
@@ -81,7 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let normalPortions = normalizePortions(matchPlan.portions);
 
-  // ✅ ลำดับหมวดตามภาพที่ Atom ส่ง
   const foodOrder = [
     { type: "ข้าว-แป้ง", color: "#fff9cc" },
     { type: "เนื้อสัตว์", isHeader: true, color: "#ffffff" },
@@ -132,50 +136,43 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderTable(portions) {
-  foodTableBody.innerHTML = "";
-  const withMeals = computeMeals(portions);
+    foodTableBody.innerHTML = "";
+    const withMeals = computeMeals(portions);
 
-  withMeals.forEach((row, idx) => {
-    const tr = document.createElement("tr");
+    withMeals.forEach((row, idx) => {
+      const tr = document.createElement("tr");
+      tr.setAttribute("data-type", row.type);
+      tr.style.backgroundColor = row.color || "white";
+      const indentStyle = row.indent ? "padding-left: 20px;" : "";
+      const boldStyle = row.isHeader ? "font-weight: 600;" : "";
+      tr.innerHTML = `
+        <td>${idx + 1}</td>
+        <td style="text-align:left; ${indentStyle} ${boldStyle}">${row.type}</td>
+        <td>${row.total || "-"}</td>
+        <td>${formatCell(row.breakfast)}</td>
+        <td>${formatCell(row.lunch)}</td>
+        <td>${formatCell(row.dinner)}</td>
+      `;
+      foodTableBody.appendChild(tr);
+    });
+  }
 
-    // ✅ ให้ CSS ดึงสีได้จาก data-type
-    tr.setAttribute("data-type", row.type);
+  function formatCell(val) {
+    return typeof val === "number"
+      ? val % 1 === 0
+        ? val.toFixed(0)
+        : val.toFixed(1)
+      : val;
+  }
 
-    // ✅ fallback สีพื้นหลัง (เฉพาะ header)
-    tr.style.backgroundColor = row.color || "white";
-
-    const indentStyle = row.indent ? "padding-left: 20px;" : "";
-    const boldStyle = row.isHeader ? "font-weight: 600;" : "";
-
-    tr.innerHTML = `
-      <td>${idx + 1}</td>
-      <td style="text-align:left; ${indentStyle} ${boldStyle}">${row.type}</td>
-      <td>${row.total || "-"}</td>
-      <td>${
-        typeof row.breakfast === "number"
-          ? row.breakfast % 1 === 0
-            ? row.breakfast.toFixed(0)
-            : row.breakfast.toFixed(1)
-          : row.breakfast
-      }</td>
-      <td>${
-        typeof row.lunch === "number"
-          ? row.lunch % 1 === 0
-            ? row.lunch.toFixed(0)
-            : row.lunch.toFixed(1)
-          : row.lunch
-      }</td>
-      <td>${
-        typeof row.dinner === "number"
-          ? row.dinner % 1 === 0
-            ? row.dinner.toFixed(0)
-            : row.dinner.toFixed(1)
-          : row.dinner
-      }</td>
-    `;
-    foodTableBody.appendChild(tr);
+  // ✅ toggle ทำงานได้
+  let combined = false;
+  combineToggle.addEventListener("click", () => {
+    combined = !combined;
+    combineToggle.textContent = combined ? "แยกเนื้อสัตว์" : "รวมเนื้อสัตว์";
+    combineToggle.classList.toggle("active");
+    renderTable(normalPortions);
   });
-}
 
   renderTable(normalPortions);
 });
